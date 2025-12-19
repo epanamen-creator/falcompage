@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcom | Soluciones Telemáticas Integrales</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuración personalizada -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0056b3', // Azul Corporativo
+                            cyan: '#00BCD4', // Acentos tecnológicos
+                            dark: '#0f172a', // Fondo oscuro premium
+                            light: '#f8fafc',
+                            orange: '#f97316', // Wialon accent / Moto
+                            green: '#10b981', // Éxito/Ahorro/PioneerX
+                            purple: '#8b5cf6', // WiaTag accent
+                            red: '#ef4444',    // Cámaras
+                            gold: '#d97706',   // Candado
+                            silver: '#64748b', // CyberLabel
+                            indigo: '#4f46e5', // KnightX (GPS Móvil)
+                            teal: '#0d9488'    // TorchX (OBDII)
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Ajuste de scroll aumentado para compensar la nueva barra superior */
+        section { scroll-margin-top: 130px; }
+        
+        .service-card { transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        .btn-primary { background-color: #0056b3; color: white; transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: #004494; transform: scale(1.05); }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Feature list item style */
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+            border: 1px solid #f1f5f9;
+        }
+        .feature-item:hover {
+            transform: translateX(5px);
+            background-color: #f8fafc;
+            border-color: #e2e8f0;
+        }
+        
+        .feature-icon-wrapper {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Dropdown */
+        .dropdown:hover .dropdown-menu { display: block; animation: fadeIn 0.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-blue selection:text-white">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300" id="navbar">
+        
+        <!-- BARRA SUPERIOR (Nueva Línea) - Visible solo en Desktop -->
+        <div class="hidden md:block bg-brand-dark text-white py-2 border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
+                <!-- Información de contacto rápida a la izquierda -->
+                <div class="flex items-center text-gray-400">
+                    <span class="mr-4"><i class="fa-solid fa-phone mr-1 text-brand-cyan"></i> +503 7563-6542</span>
+                    <span><i class="fa-solid fa-envelope mr-1 text-brand-cyan"></i> Ventas@falcom.io</span>
+                </div>
+
+                <!-- Botones de Acción (Movidos aquí) -->
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.facebook.com/503falcom" target="_blank" class="hover:text-brand-cyan transition-colors flex items-center gap-2 mr-2">
+                        <i class="fa-brands fa-facebook-square text-lg"></i> Facebook
+                    </a>
+                    
+                    <!-- Botón WhatsApp -->
+                    <a href="https://wa.me/50375636542" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-md transform hover:scale-105 flex items-center">
+                        <i class="fa-brands fa-whatsapp text-lg mr-1"></i> WhatsApp
+                    </a>
+
+                    <a href="#contacto" class="bg-brand-blue hover:bg-blue-600 text-white px-5 py-1.5 rounded-full text-xs font-bold transition-all shadow-md transform hover:scale-105 flex items-center">
+                        <i class="fa-solid fa-file-invoice-dollar mr-2"></i> SOLICITAR COTIZACIÓN
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA PRINCIPAL (Menú) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-brand-blue text-white p-2 rounded-lg">
+                            <i class="fa-solid fa-location-crosshairs text-xl"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl leading-none text-gray-900 tracking-tight">FALCOM</span>
+                            <span class="text-[10px] text-gray-500 font-semibold tracking-widest uppercase">GPS El Salvador</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menú Escritorio (Centrado y con más espacio) -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-600 hover:text-brand-blue font-medium transition-colors border-b-2 border-transparent hover:border-brand-blue py-1">Inicio</a>
+                    
+                    <!-- Dropdown Soluciones -->
+                    <div class="relative dropdown group h-20 flex items-center">
+                        <button class="text-gray-600 group-hover:text-brand-blue font-medium transition-colors flex items-center gap-1 focus:outline-none py-1 border-b-2 border-transparent group-hover:border-brand-blue">
+                            Soluciones <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden top-16 left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden pt-2">
+                            <a href="#soluciones" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-layer-group mr-2 text-brand-blue"></i> Visión General
+                            </a>
+                            <a href="#combustible" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-gas-pump mr-2 text-brand-orange"></i> Control de Combustible
+                            </a>
+                            <a href="#logistica" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-boxes-packing mr-2 text-brand-cyan"></i> Gestión Logística
+                            </a>
+                            <a href="#wiatag" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue">
+                                <i class="fa-solid fa-mobile-screen-button mr-2 text-brand-purple"></i> App Móvil (WiaTag)
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Equipos Disponibles -->
+                    <div class="relative dropdown group h-20 flex items-center">
+                        <button class="text-gray-600 group-hover:text-brand-blue font-medium transition-colors flex items-center gap-1 focus:outline-none py-1 border-b-2 border-transparent group-hover:border-brand-blue">
+                            Equipos Disponibles <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden top-16 left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden pt-2">
+                            <a href="#pioneer" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-microchip mr-2 text-brand-green"></i> GPS Avanzado
+                            </a>
+                            <a href="#camaras" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-video mr-2 text-brand-red"></i> Cámaras GPS 4G
+                            </a>
+                            <a href="#candado" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-lock mr-2 text-brand-gold"></i> Candado Electrónico
+                            </a>
+                            <a href="#etiqueta" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-tag mr-2 text-brand-silver"></i> Etiqueta Electrónica
+                            </a>
+                            <a href="#gps-movil" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-location-dot mr-2 text-brand-indigo"></i> GPS Móvil
+                            </a>
+                            <a href="#torchx" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors border-b border-gray-50">
+                                <i class="fa-solid fa-car-on mr-2 text-brand-teal"></i> GPS OBDII para Carro
+                            </a>
+                            <a href="#vl111" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue transition-colors">
+                                <i class="fa-solid fa-motorcycle mr-2 text-brand-orange"></i> GPS para Moto
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- NUEVO MENU SENSORES -->
+                    <div class="relative dropdown group h-20 flex items-center">
+                        <button class="text-gray-600 group-hover:text-brand-blue font-medium transition-colors flex items-center gap-1 focus:outline-none py-1 border-b-2 border-transparent group-hover:border-brand-blue">
+                            Sensores <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden top-16 left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden pt-2 max-h-96 overflow-y-auto">
+                            <a href="#solarguard120" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-lock-open mr-2 text-brand-gold"></i> SolarGuardX 120
+                            </a>
+                            <a href="#tbutton" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-circle-dot mr-2 text-brand-red"></i> Botón de Pánico BLE
+                            </a>
+                            <a href="#tone" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-temperature-arrow-down mr-2 text-brand-blue"></i> Sensor Temp T-One
+                            </a>
+                            <a href="#tsdt1" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-door-open mr-2 text-brand-indigo"></i> Sensor Puerta TSDT1
+                            </a>
+                            <a href="#tsense" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-cube mr-2 text-brand-purple"></i> Multi-Sensor T-Sense
+                            </a>
+                            <a href="#trelay" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-toggle-on mr-2 text-brand-green"></i> T-Relay Híbrido
+                            </a>
+                            <a href="#tsh1" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue border-b border-gray-50">
+                                <i class="fa-solid fa-droplet mr-2 text-brand-cyan"></i> TSH1-B Humedad
+                            </a>
+                            <a href="#tsr1" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-brand-blue">
+                                <i class="fa-solid fa-power-off mr-2 text-brand-silver"></i> TSR1-B Relay BLE
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Enlace "Sobre Falcom" -->
+                    <a href="#sobre-falcom" class="text-gray-600 hover:text-brand-blue font-medium transition-colors border-b-2 border-transparent hover:border-brand-blue py-1">Sobre Falcom</a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-blue focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil (Mantiene los botones aquí para acceso en celular) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-blue-50">Inicio</a>
+                
+                <div class="px-3 py-2 border-b border-gray-100">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Soluciones</span>
+                    <a href="#soluciones" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-blue">Visión General</a>
+                    <a href="#combustible" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-orange">Combustible</a>
+                    <a href="#logistica" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-cyan">Logística</a>
+                    <a href="#wiatag" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-purple">App Móvil</a>
+                </div>
+
+                <div class="px-3 py-2 border-b border-gray-100">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Equipos Disponibles</span>
+                    <a href="#pioneer" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-green">GPS Avanzado</a>
+                    <a href="#camaras" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-red">Cámaras GPS</a>
+                    <a href="#candado" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-gold">Candado Electrónico</a>
+                    <a href="#etiqueta" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-silver">Etiqueta Electrónica</a>
+                    <a href="#gps-movil" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-indigo">GPS Móvil</a>
+                    <a href="#torchx" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-teal">GPS OBDII (Carro)</a>
+                    <a href="#vl111" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-orange">GPS para Moto</a>
+                </div>
+
+                <div class="px-3 py-2 border-b border-gray-100">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Sensores</span>
+                    <a href="#solarguard120" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-gold">SolarGuardX 120</a>
+                    <a href="#tbutton" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-red">T-Button</a>
+                    <a href="#tone" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-blue">T-One</a>
+                    <a href="#tsdt1" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-indigo">TSDT1-B</a>
+                    <a href="#tsense" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-purple">T-Sense</a>
+                    <a href="#trelay" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-green">T-Relay</a>
+                    <a href="#tsh1" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-cyan">TSH1-B</a>
+                    <a href="#tsr1" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-blue pl-2 border-l-2 border-transparent hover:border-brand-silver">TSR1-B</a>
+                </div>
+
+                <a href="#sobre-falcom" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-blue hover:bg-blue-50">Sobre Falcom</a>
+
+                <!-- Botones Extras en Móvil -->
+                <div class="pt-4 mt-2 border-t border-gray-100">
+                    <a href="https://www.facebook.com/503falcom" target="_blank" class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 hover:bg-blue-50 font-bold">
+                        <i class="fa-brands fa-facebook mr-2"></i> Facebook
+                    </a>
+                    <a href="https://wa.me/50375636542" target="_blank" class="block mt-2 text-center px-3 py-3 rounded-lg text-base font-bold text-white bg-green-500 shadow-md">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
+                    </a>
+                    <a href="#contacto" class="block mt-2 text-center px-3 py-3 rounded-lg text-base font-bold text-white bg-brand-blue shadow-md">
+                        Cotizar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN HERO: PROPUESTA DE VALOR -->
+    <section id="inicio" class="hero-bg h-screen flex items-center justify-center relative px-4">
+        <div class="text-center max-w-5xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md mb-6 animate-fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                <span class="text-sm font-medium tracking-wide">Plataforma Innovadora de Gestión de Flotas</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Maximice el Rendimiento <br> de su <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Negocio</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                Reduzca costos de combustible, optimice rutas y controle sus activos en tiempo real. 
+                Una solución integral para flotas, carga, personal y activos fijos.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#soluciones" class="w-full sm:w-auto btn-primary px-8 py-4 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-layer-group"></i> Ver Soluciones
+                </a>
+                <a href="#contacto" class="w-full sm:w-auto bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all flex items-center justify-center">
+                    Solicitar Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: NUESTRAS SOLUCIONES INTEGRALES -->
+    <section id="soluciones" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-blue font-bold tracking-wider uppercase text-sm">Portafolio de Servicios</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Soluciones para cada necesidad</h2>
+                <div class="w-24 h-1.5 bg-brand-blue mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Centralice toda su operación logística en una sola plataforma robusta.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Control de Combustible -->
+                <a href="#combustible" class="service-card bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-orange group block">
+                    <div class="w-14 h-14 bg-brand-orange text-white rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-gas-pump"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Control de Combustible</h3>
+                    <p class="text-gray-500 text-sm">Detección de robos, cargas y análisis de eficiencia en tiempo real.</p>
+                </a>
+
+                <!-- 2. Gestión Logística -->
+                <a href="#logistica" class="service-card bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-cyan group block">
+                    <div class="w-14 h-14 bg-brand-cyan text-white rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Gestión Logística</h3>
+                    <p class="text-gray-500 text-sm">Planificación de rutas, despacho de pedidos y prueba de entrega digital.</p>
+                </a>
+
+                <!-- 3. App Móvil (WiaTag) -->
+                <a href="#wiatag" class="service-card bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple group block">
+                    <div class="w-14 h-14 bg-brand-purple text-white rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">App Móvil WiaTag</h3>
+                    <p class="text-gray-500 text-sm">Rastreo de personal, chat y botón de pánico sin hardware adicional.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CONTROL DE COMBUSTIBLE -->
+    <section id="combustible" class="py-24 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1565043589221-1a6fd49510b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-5/12">
+                    <span class="text-brand-orange font-bold tracking-wider uppercase text-sm mb-2 block">PLATAFORMA WIALON</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Control Total: Combustible y Sensores</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                        Herramientas avanzadas para eliminar el robo de combustible y optimizar el rendimiento de la flota.
+                    </p>
+                    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-2xl">
+                        <div class="flex justify-between items-end mb-4">
+                            <div><div class="text-sm text-gray-400">Ahorro Mensual</div><div class="text-3xl font-bold text-white">$1,240</div></div>
+                            <div class="text-brand-green text-sm font-bold">+15% Eficiencia</div>
+                        </div>
+                        <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-brand-orange w-3/4"></div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-400">Reducción de costos operativos</div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-droplet text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Sensor de Combustible</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-chart-line text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Gráficas de Consumo</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-triangle-exclamation text-brand-orange fa-fade"></i></div> <span class="text-gray-800 font-medium">Alerta de Robos/Drenajes</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-gas-pump text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Control de Cargas</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-video text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Video Telemática (MDVR)</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-leaf text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Eco Driving (Conducción)</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-temperature-half text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Control de Temperatura</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-wrench text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Gestión de Mantenimiento</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-route text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Optimización de Rutas</span></div>
+                    <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-microchip text-brand-orange"></i></div> <span class="text-gray-800 font-medium">Lectura CAN Bus</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- Carrusel Fondo Opaco -->
+        <div class="carousel-container absolute inset-0 z-0 opacity-10 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1565043589221-1a6fd49510b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 carousel-slide">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+            <img src="https://images.unsplash.com/photo-1590082725062-1db727404491?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+            <img src="https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+        </div>
+    </section>
+
+    <!-- SECCIÓN: GESTIÓN LOGÍSTICA -->
+    <section id="logistica" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-12">
+                <div class="lg:w-5/12 relative h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100 carousel-container">
+                    <!-- Carrusel Logística -->
+                    <img src="https://images.unsplash.com/photo-1616401784845-180886ba9ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-7/12">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-cyan/10 text-brand-cyan text-sm font-bold mb-4">LOGÍSTICA DE ÚLTIMA MILLA</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Logistics: Gestión de Pedidos</h2>
+                    <p class="text-lg text-gray-600 mb-8">Controle todas las etapas del servicio de entrega. Desde la creación del pedido hasta la firma digital del cliente.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-box-open text-brand-cyan"></i></div> <span>Creación de Pedidos</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-map-location-dot text-brand-cyan"></i></div> <span>Planificación de Rutas</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-brands fa-google text-brand-cyan"></i></div> <span>Google Maps Routing</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-mobile-screen text-brand-cyan"></i></div> <span>App para Conductor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-comments text-brand-cyan"></i></div> <span>Chat Operador-Conductor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-signature text-brand-cyan"></i></div> <span>Firma Digital (POD)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-camera text-brand-cyan"></i></div> <span>Evidencia Fotográfica</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-bell text-brand-cyan"></i></div> <span>Notificaciones Push</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-file-pdf text-brand-cyan"></i></div> <span>Reportes y Analíticas</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-clock text-brand-cyan"></i></div> <span>Tiempo Estimado (ETA)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: APP MÓVIL (WIATAG) -->
+    <section id="wiatag" class="py-24 bg-gray-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-purple font-bold tracking-wider uppercase text-sm">PERSONAL MÓVIL</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">WiaTag: Tu Celular es el GPS</h2>
+                <div class="w-24 h-1.5 bg-brand-purple mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">La solución perfecta para rastrear personal de seguridad, ventas y técnico sin invertir en hardware costoso.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-mobile text-brand-purple"></i></div> <span>Sin Costo de Hardware</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-location-dot text-brand-purple"></i></div> <span>Rastreo GPS Preciso</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-circle-exclamation text-brand-purple fa-beat"></i></div> <span>Botón de Pánico SOS</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-qrcode text-brand-purple"></i></div> <span>Escaneo QR / NFC</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-image text-brand-purple"></i></div> <span>Envío de Fotos</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-comments text-brand-purple"></i></div> <span>Chat Integrado</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-user-tag text-brand-purple"></i></div> <span>Estados Personalizados</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-battery-half text-brand-purple"></i></div> <span>Modos Ahorro Batería</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-lock text-brand-purple"></i></div> <span>Contraseña Admin</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-cloud text-brand-purple"></i></div> <span>Datos Offline</span></div>
+                    </div>
+                    <div class="mt-8 text-center lg:text-left">
+                        <a href="#contacto" class="inline-flex items-center justify-center px-8 py-3 bg-brand-purple text-white font-bold rounded-full shadow-lg hover:bg-purple-700 transition-colors">Solicitar WiaTag <i class="fa-solid fa-download ml-2"></i></a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative w-72 h-[550px] bg-gray-900 rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden carousel-container">
+                        <!-- Carrusel WiaTag -->
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-opacity duration-1000 opacity-100 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-opacity duration-1000 opacity-0 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-opacity duration-1000 opacity-0 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1605218427306-6354db696faa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-opacity duration-1000 opacity-0 carousel-slide">
+                        
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none"><i class="fa-solid fa-location-crosshairs text-6xl text-white/50 animate-ping"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PIONEERX 101 -->
+    <section id="pioneer" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-5/12 relative">
+                    <div class="relative z-10 bg-white p-8 rounded-3xl shadow-xl border border-gray-100 h-80 carousel-container overflow-hidden">
+                        <!-- Carrusel PioneerX -->
+                        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 opacity-100 carousel-slide p-4">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae53f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide rounded-xl">
+                    </div>
+                </div>
+                <div class="lg:w-7/12">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-4">HARDWARE INDUSTRIAL</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">PioneerX 101: GPS Avanzado</h2>
+                    <p class="text-lg text-gray-600 mb-8">Rastreador GNSS cableado 4G con instalación oculta. Rango de voltaje 7V-100V.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-bolt text-brand-green"></i></div> <span>Amplio Voltaje (7-100V)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-car-burst text-brand-green"></i></div> <span>Detección de Choques</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-gauge-high text-brand-green"></i></div> <span>Conducción Agresiva</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-brands fa-bluetooth text-brand-green"></i></div> <span>Bluetooth 5.0</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-microchip text-brand-green"></i></div> <span>RS232 / CAN Bus</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-water text-brand-green"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-memory text-brand-green"></i></div> <span>Memoria Interna</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-sim-card text-brand-green"></i></div> <span>Nano SIM</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-power-off text-brand-green"></i></div> <span>Corte de Motor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-cloud-arrow-up text-brand-green"></i></div> <span>FOTA (Actualización)</span></div>
+                    </div>
+                    <div class="mt-10"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-green rounded-full hover:bg-green-600 shadow-lg">Cotizar PioneerX <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÁMARAS JC181 -->
+    <section id="camaras" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-red/10 text-brand-red text-sm font-bold mb-4">VIDEO TELEMÁTICA</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Cámara GPS 4G JC181</h2>
+                    <p class="text-lg text-gray-600 mb-6">Doble canal con transmisión 4G en vivo para monitoreo completo.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-video text-brand-red fa-beat"></i></div> <span>Video en Vivo 4G</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-eye text-brand-red"></i></div> <span>Doble Lente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-microphone-lines text-brand-red"></i></div> <span>Audio Bidireccional</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-triangle-exclamation text-brand-red"></i></div> <span>Botón SOS</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-power-off text-brand-red"></i></div> <span>Paro de Motor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-wifi text-brand-red"></i></div> <span>WiFi Hotspot</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-sd-card text-brand-red"></i></div> <span>Soporta 128GB SD</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-moon text-brand-red"></i></div> <span>Visión Nocturna</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-car-crash text-brand-red"></i></div> <span>Sensor Choques</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-server text-brand-red"></i></div> <span>Subida a Nube</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-red rounded-full hover:bg-red-600 shadow-lg">Cotizar Cámara JC181 <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-900 bg-gray-900 h-80 carousel-container">
+                        <!-- Carrusel JC181 -->
+                        <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1597589252329-c09191d9d9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CANDADO ELECTRÓNICO -->
+    <section id="candado" class="py-24 bg-gray-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white carousel-container">
+                    <!-- Carrusel SolarGuardX -->
+                    <img src="https://images.unsplash.com/photo-1585713181935-d5f622cc2415?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1494412574643-35d324698420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1598444222047-92a0e422964a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1565514020176-db7020fb3aa3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/10 text-brand-gold text-sm font-bold mb-4">SEGURIDAD DE CARGA</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">SolarGuardX 100</h2>
+                    <p class="text-lg text-gray-600 mb-6">Candado GPS inteligente autosuficiente para contenedores.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-solar-panel text-brand-gold fa-spin-pulse" style="--fa-animation-duration: 3s;"></i></div> <span>Panel Solar Integrado</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-battery-full text-brand-gold"></i></div> <span>Batería 14400mAh</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-id-card text-brand-gold"></i></div> <span>Apertura RFID</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-brands fa-bluetooth text-brand-gold"></i></div> <span>Apertura Bluetooth</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-scissors text-brand-gold w-8 fa-shake"></i></div> <span>Alarma Corte Cuerda</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-magnet text-brand-gold"></i></div> <span>Montaje Magnético</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-water text-brand-gold"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-globe text-brand-gold"></i></div> <span>Roaming Global 4G</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-lock text-brand-gold"></i></div> <span>Cierre Automático</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-bell text-brand-gold"></i></div> <span>Alertas Tiempo Real</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-3 bg-brand-gold text-white font-bold rounded-full shadow-lg hover:bg-yellow-600 transition-colors">Cotizar SolarGuardX <i class="fa-solid fa-file-invoice-dollar ml-2"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ETIQUETA ELECTRÓNICA -->
+    <section id="etiqueta" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-silver/20 text-gray-700 text-sm font-bold mb-4 border border-brand-silver/30">RASTREO ULTRA-DELGADO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">CyberLabelX100</h2>
+                    <p class="text-lg text-gray-600 mb-6">El rastreador más delgado del mercado (5.6 mm) para paquetería.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-ruler-vertical text-brand-silver"></i></div> <span>Ultra Delgado (5.6mm)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-temperature-low text-brand-silver"></i></div> <span>Sensor Temperatura</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-regular fa-sun text-brand-silver fa-spin" style="--fa-animation-duration: 5s;"></i></div> <span>Sensor Luz (Apertura)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-plane-departure text-brand-silver"></i></div> <span>Modo Vuelo (UN38.3)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-wifi text-brand-silver"></i></div> <span>WiFi Positioning</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-battery-half text-brand-silver"></i></div> <span>194 Días Standby</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-box text-brand-silver"></i></div> <span>Forma de Etiqueta</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-droplet text-brand-silver"></i></div> <span>IP54 Resistente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-rotate text-brand-silver"></i></div> <span>Detección Movimiento</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-network-wired text-brand-silver"></i></div> <span>4G LTE Cat 1</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-silver rounded-full hover:bg-gray-700 shadow-lg">Solicitar CyberLabel <i class="fa-solid fa-box-open ml-2"></i></a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <!-- Carrusel CyberLabel -->
+                    <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1624969862293-b749659ccc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GPS MÓVIL -->
+    <section id="gps-movil" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <!-- Carrusel KnightX -->
+                    <img src="https://images.unsplash.com/photo-1550029330-8dbccaade163?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-indigo/10 text-brand-indigo text-sm font-bold mb-4 border border-brand-indigo/20">RASTREO PORTÁTIL</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">KnightX 100: GPS Recargable</h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">Rastreador portátil robusto con batería de larga duración.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-battery-full text-brand-indigo"></i></div> <span>Batería 6400mAh</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-clock text-brand-indigo"></i></div> <span>134 Días Autonomía</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-wifi text-brand-indigo"></i></div> <span>WiFi Indoor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-magnet text-brand-indigo"></i></div> <span>Montaje Magnético</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-person-falling text-brand-indigo"></i></div> <span>Botón de Pánico</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-water text-brand-indigo"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-temperature-arrow-up text-brand-indigo"></i></div> <span>Sensor Temp (Opcional)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-brands fa-bluetooth text-brand-indigo"></i></div> <span>Bluetooth 5.1</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-bell text-brand-indigo fa-shake"></i></div> <span>Alarma Batería Baja</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-globe text-brand-indigo"></i></div> <span>Cobertura 4G Global</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-indigo rounded-full hover:bg-indigo-700 shadow-lg">Cotizar KnightX <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TORCHX 100 (GPS OBDII) -->
+    <section id="torchx" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-teal/10 text-brand-teal text-sm font-bold mb-4 border border-brand-teal/20">CONECTIVIDAD INTELIGENTE</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">TorchX 100: OBDII Plug & Play</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">Instalación instantánea en puerto OBDII. Diagnóstico y WiFi.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-plug text-brand-teal"></i></div> <span>Plug & Play</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-wifi text-brand-teal"></i></div> <span>WiFi Hotspot</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-car-on text-brand-teal"></i></div> <span>Diagnóstico DTC</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-truck-pickup text-brand-teal"></i></div> <span>ELD Ready</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-volume-high text-brand-teal"></i></div> <span>Buzzer Integrado</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-car-crash text-brand-teal"></i></div> <span>Detección Choques</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-gauge-high text-brand-teal"></i></div> <span>Conducta Manejo</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-battery-full text-brand-teal"></i></div> <span>Batería Respaldo</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-brands fa-bluetooth text-brand-teal"></i></div> <span>Bluetooth 4.1</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-teal/10"><i class="fa-solid fa-truck-moving text-brand-teal"></i></div> <span>Alarma Remolque</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-teal rounded-full hover:bg-teal-700 shadow-lg">Cotizar TorchX <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <!-- Carrusel TorchX -->
+                    <img src="https://images.unsplash.com/photo-1635773063559-40c2666cb474?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl mix-blend-multiply transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VL111 (GPS PARA MOTO) -->
+    <section id="vl111" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-5/12 relative h-80 carousel-container">
+                    <!-- Carrusel VL111 -->
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1480926965639-9b5f63a0817b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1626847037657-fd3622613ce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-7/12">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-bold mb-4 border border-brand-orange/20">ESPECIAL MOTOCICLETAS</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">VL111: Rastreador 4G para Motos</h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">Resistente a vibraciones y clima. Tecnología 9-90V.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-bolt text-brand-orange"></i></div> <span>Voltaje 9-90V</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-road text-brand-orange"></i></div> <span>Suavizado Curvas</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-car-battery text-brand-orange"></i></div> <span>Protección Batería</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-umbrella text-brand-orange"></i></div> <span>IP65 Resistente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-power-off text-brand-orange"></i></div> <span>Corte Motor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-satellite-dish text-brand-orange"></i></div> <span>GPS + LBS</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-bell text-brand-orange fa-shake"></i></div> <span>Alerta Movimiento</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-plug text-brand-orange"></i></div> <span>Detección ACC</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-triangle-exclamation text-brand-orange"></i></div> <span>Alerta Remolque</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-orange/10"><i class="fa-solid fa-memory text-brand-orange"></i></div> <span>Memoria Interna</span></div>
+                    </div>
+                    <div class="mt-10"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-orange rounded-full hover:bg-orange-600 shadow-lg">Cotizar VL111 <i class="fa-solid fa-arrow-right ml-2"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================== NUEVA SECCIÓN DE SENSORES ================== -->
+
+    <!-- SolarGuardX 120 -->
+    <section id="solarguard120" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/10 text-brand-gold text-sm font-bold mb-4">CANDADO INTELIGENTE</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">SolarGuardX 120</h2>
+                    <p class="text-lg text-gray-600 mb-6">Candado BLE solar para activos de alto valor. Más compacto y ligero.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-solar-panel text-brand-gold fa-spin"></i></div> <span>Panel Solar (Infinito)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-battery-full text-brand-gold"></i></div> <span>2500mAh Batería</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-id-card text-brand-gold"></i></div> <span>Desbloqueo RFID</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-brands fa-bluetooth text-brand-gold"></i></div> <span>Desbloqueo BLE 5.3</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-water text-brand-gold"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-scissors text-brand-gold"></i></div> <span>Alarma Corte Cuerda</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-weight-hanging text-brand-gold"></i></div> <span>Peso Ligero (535g)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-bell text-brand-gold fa-shake"></i></div> <span>Alerta Movimiento</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-magnet text-brand-gold"></i></div> <span>Montaje Magnético</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-gold/10"><i class="fa-solid fa-temperature-half text-brand-gold"></i></div> <span>Sensor Temperatura</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-gold rounded-full hover:bg-yellow-600 shadow-lg">Cotizar SolarGuardX 120</a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1590845947698-8924d7409b56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1516937941348-c09645f875eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a696335b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1533230536440-42469a5310ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- T-Button -->
+    <section id="tbutton" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1619140069918-42245229553c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1589820296156-2454b3a8630e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-red/10 text-brand-red text-sm font-bold mb-4">SEGURIDAD PERSONAL</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">T-Button: Pánico BLE</h2>
+                    <p class="text-lg text-gray-600 mb-6">Botón de pánico inalámbrico SOS para seguridad del conductor y personal.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-circle-dot text-brand-red fa-beat"></i></div> <span>Botón SOS Pánico</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-brands fa-bluetooth text-brand-red"></i></div> <span>BLE 5.0 Inalámbrico</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-key text-brand-red"></i></div> <span>Diseño Llavero</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-battery-half text-brand-red"></i></div> <span>Batería 3 Años</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-water text-brand-red"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-link text-brand-red"></i></div> <span>Conexión Fácil</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-bolt text-brand-red"></i></div> <span>Respuesta Rápida</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-weight-hanging text-brand-red"></i></div> <span>Ultra Ligero</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-mobile-screen text-brand-red"></i></div> <span>Compatible App</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-red/10"><i class="fa-solid fa-shield-halved text-brand-red"></i></div> <span>Antigolpes</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-red rounded-full hover:bg-red-600 shadow-lg">Cotizar T-Button</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- T-One Sensor -->
+    <section id="tone" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-blue/10 text-brand-blue text-sm font-bold mb-4">CADENA DE FRÍO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">T-One: Sonda Temperatura</h2>
+                    <p class="text-lg text-gray-600 mb-6">Sensor BLE profesional con sonda para monitoreo preciso de temperatura y humedad.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-temperature-low text-brand-blue"></i></div> <span>Sonda Externa</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-brands fa-bluetooth text-brand-blue"></i></div> <span>BLE 5.1</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-droplet text-brand-blue"></i></div> <span>Humedad (Opcional)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-battery-full text-brand-blue"></i></div> <span>Batería 1800 Días</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-water text-brand-blue"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-magnet text-brand-blue"></i></div> <span>Imán Integrado</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-bullseye text-brand-blue"></i></div> <span>Alta Precisión</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-snowflake text-brand-blue"></i></div> <span>Rango -40°C a +125°C</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-truck-medical text-brand-blue"></i></div> <span>Ideal Pharma/Fruta</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-blue/10"><i class="fa-solid fa-memory text-brand-blue"></i></div> <span>Cache de Datos</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-blue rounded-full hover:bg-blue-600 shadow-lg">Cotizar T-One</a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1623944893529-65b4c4423793?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1632215160867-077271420790?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TSDT1-B Door Sensor -->
+    <section id="tsdt1" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1558002038-1091a5750392?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-indigo/10 text-brand-indigo text-sm font-bold mb-4">SEGURIDAD DE ACCESO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">TSDT1-B: Sensor Puerta</h2>
+                    <p class="text-lg text-gray-600 mb-6">Monitoreo inalámbrico de puertas y temperatura para carga segura.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-door-open text-brand-indigo fa-beat-fade"></i></div> <span>Detección Apertura</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-temperature-half text-brand-indigo"></i></div> <span>Sensor Temp Ambiente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-brands fa-bluetooth text-brand-indigo"></i></div> <span>BLE 5.0</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-battery-full text-brand-indigo"></i></div> <span>Batería 3 Años</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-wifi text-brand-indigo"></i></div> <span>Sin Cables</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-bell text-brand-indigo"></i></div> <span>Alarma Inmediata</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-magnet text-brand-indigo"></i></div> <span>Imán Potente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-water text-brand-indigo"></i></div> <span>IP65 Resistente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-check text-brand-indigo"></i></div> <span>Instalación Fácil</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-indigo/10"><i class="fa-solid fa-mobile text-brand-indigo"></i></div> <span>Configuración App</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-indigo rounded-full hover:bg-indigo-600 shadow-lg">Cotizar TSDT1-B</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- T-Sense Multi-Sensor -->
+    <section id="tsense" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-purple/10 text-brand-purple text-sm font-bold mb-4">MULTI-PROPÓSITO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">T-Sense: Multi-Sensor</h2>
+                    <p class="text-lg text-gray-600 mb-6">Un solo dispositivo para monitorear temperatura, movimiento y puertas.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-cube text-brand-purple"></i></div> <span>3 Sensores en 1</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-temperature-high text-brand-purple"></i></div> <span>Temperatura</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-person-running text-brand-purple"></i></div> <span>Acelerómetro (Mov)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-door-closed text-brand-purple"></i></div> <span>Magnetómetro (Puerta)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-brands fa-bluetooth text-brand-purple"></i></div> <span>BLE 5.0</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-water text-brand-purple"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-battery-full text-brand-purple"></i></div> <span>Batería Larga Duración</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-memory text-brand-purple"></i></div> <span>Almacenamiento Local</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-compact-disc text-brand-purple"></i></div> <span>Diseño Compacto</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-purple/10"><i class="fa-solid fa-screwdriver-wrench text-brand-purple"></i></div> <span>Instalación Simple</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-purple rounded-full hover:bg-purple-600 shadow-lg">Cotizar T-Sense</a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a696335b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1563770095-39d46baa6c72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1624969862293-b749659ccc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- T-Relay -->
+    <section id="trelay" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a696335b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1580894732930-0babd100d356?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-4">CONTROL HÍBRIDO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">T-Relay: Híbrido BLE/Cable</h2>
+                    <p class="text-lg text-gray-600 mb-6">Relé profesional cableado e inalámbrico para inmovilización y control.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-toggle-on text-brand-green"></i></div> <span>Control Cableado</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-brands fa-bluetooth text-brand-green"></i></div> <span>Control BLE 5.2</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-power-off text-brand-green"></i></div> <span>Paro de Motor</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-door-open text-brand-green"></i></div> <span>Control Puertas</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-bolt text-brand-green"></i></div> <span>Voltaje 7V-60V</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-water text-brand-green"></i></div> <span>IP67 Impermeable</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-plug text-brand-green"></i></div> <span>Detección Ignición</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-wave-square text-brand-green"></i></div> <span>Soporte Pulsos</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-car-battery text-brand-green"></i></div> <span>Carga 60A Max</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-green/10"><i class="fa-solid fa-server text-brand-green"></i></div> <span>Múltiples I/O</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-green rounded-full hover:bg-green-600 shadow-lg">Cotizar T-Relay</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TSH1-B Sensor -->
+    <section id="tsh1" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-cyan/10 text-brand-cyan text-sm font-bold mb-4">AMBIENTE</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">TSH1-B: Temp & Humedad</h2>
+                    <p class="text-lg text-gray-600 mb-6">Sensor profesional compacto para monitoreo ambiental.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-temperature-half text-brand-cyan"></i></div> <span>Alta Precisión Temp</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-droplet text-brand-cyan"></i></div> <span>Sensor Humedad</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-brands fa-bluetooth text-brand-cyan"></i></div> <span>BLE 5.0</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-water text-brand-cyan"></i></div> <span>IP65 Resistente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-battery-full text-brand-cyan"></i></div> <span>Batería 5 Años</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-weight-hanging text-brand-cyan"></i></div> <span>Ultra Ligero (35g)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-cloud-arrow-up text-brand-cyan"></i></div> <span>FOTA Firmware</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-compress text-brand-cyan"></i></div> <span>Diseño Compacto</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-screwdriver text-brand-cyan"></i></div> <span>Fácil Instalación</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-cyan/10"><i class="fa-solid fa-check text-brand-cyan"></i></div> <span>Alta Estabilidad</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-cyan rounded-full hover:bg-cyan-600 shadow-lg">Cotizar TSH1-B</a></div>
+                </div>
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1623944893529-65b4c4423793?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a696335b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1632215160867-077271420790?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TSR1-B Wireless Relay -->
+    <section id="tsr1" class="py-24 bg-brand-light relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col-reverse lg:flex-row items-center gap-16 mb-20">
+                <div class="lg:w-1/2 relative h-80 carousel-container">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-100 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1580894732930-0babd100d356?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1555664424-778a696335b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-xl transition-opacity duration-1000 opacity-0 carousel-slide">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-silver/10 text-brand-silver text-sm font-bold mb-4">RELAY INALÁMBRICO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">TSR1-B: Relay BLE</h2>
+                    <p class="text-lg text-gray-600 mb-6">Relé totalmente inalámbrico fácil de ocultar e instalar.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-wifi text-brand-silver"></i></div> <span>100% Inalámbrico</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-brands fa-bluetooth text-brand-silver"></i></div> <span>BLE 5.0</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-user-secret text-brand-silver"></i></div> <span>Fácil de Ocultar</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-power-off text-brand-silver"></i></div> <span>Corte Remoto</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-bolt text-brand-silver"></i></div> <span>7V-32V DC</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-water text-brand-silver"></i></div> <span>IP65 Resistente</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-weight-hanging text-brand-silver"></i></div> <span>Muy Ligero (20g)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-car-battery text-brand-silver"></i></div> <span>Bajo Consumo</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-microchip text-brand-silver"></i></div> <span>Alta Carga (6A)</span></div>
+                        <div class="feature-item"><div class="feature-icon-wrapper bg-brand-silver/10"><i class="fa-solid fa-mobile-screen text-brand-silver"></i></div> <span>Control por App</span></div>
+                    </div>
+                    <div class="mt-8"><a href="#contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-brand-silver rounded-full hover:bg-gray-600 shadow-lg">Cotizar TSR1-B</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CONTACTO -->
+    <section id="contacto" class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-dark rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 bg-brand-blue/20"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold mb-6">Impulse su negocio hoy</h2>
+                        <p class="text-gray-300 mb-8 text-lg">Nuestros expertos están listos para diseñar la solución de rastreo perfecta para sus necesidades.</p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"><i class="fa-brands fa-whatsapp text-2xl"></i></div>
+                                <div><p class="text-xs text-gray-400 uppercase">WhatsApp</p><a href="https://wa.me/50375636542" target="_blank" class="font-bold text-xl hover:text-brand-cyan transition">7563-6542</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-12 bg-white">
+                    <form id="contactForm" class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Solicitar Asesoría</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nombre" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand-blue outline-none">
+                            <input type="tel" placeholder="Teléfono" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand-blue outline-none">
+                        </div>
+                        <select class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand-blue outline-none text-gray-600">
+                            <option value="">Me interesa...</option>
+                            <option value="vl111">GPS Moto (VL111)</option>
+                            <option value="torchx">GPS OBDII (TorchX)</option>
+                            <option value="knightx">GPS Móvil (KnightX)</option>
+                            <option value="pioneer">GPS Avanzado (PioneerX)</option>
+                            <option value="camaras">Cámaras GPS JC181</option>
+                            <option value="candado">Candado SolarGuardX</option>
+                            <option value="etiqueta">Etiqueta CyberLabel</option>
+                            <option value="flotas">Gestión de Flotas</option>
+                            <option value="combustible">Control de Combustible</option>
+                            <option value="logistica">Logística y Entregas</option>
+                        </select>
+                        <textarea rows="3" placeholder="Mensaje..." class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand-blue outline-none resize-none"></textarea>
+                        <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg flex items-center justify-center gap-2"><span>Enviar</span> <i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-8">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-crosshairs text-brand-cyan text-3xl"></i>
+                    <div class="flex flex-col"><span class="font-bold text-2xl leading-none tracking-tight">FALCOM</span><span class="text-sm text-gray-400">El Salvador</span></div>
+                </div>
+                <div class="text-sm text-gray-500">&copy; 2025 Falcom 503 El Salvador. Todos los derechos reservados.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú Móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Formulario Simple
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
+            btn.disabled = true;
+            setTimeout(() => { alert("¡Gracias! Mensaje enviado."); btn.innerHTML = originalText; btn.disabled = false; e.target.reset(); }, 1500);
+        });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) { nav.classList.add('shadow-md'); nav.classList.replace('bg-white/95', 'bg-white/100'); } 
+            else { nav.classList.remove('shadow-md'); nav.classList.replace('bg-white/100', 'bg-white/95'); }
+        });
+
+        // Carrusel Automático (Fade)
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousels = document.querySelectorAll('.carousel-container');
+            carousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                if(slides.length === 0) return;
+                let currentSlide = 0;
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('opacity-100');
+                    slides[currentSlide].classList.add('opacity-0');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.remove('opacity-0');
+                    slides[currentSlide].classList.add('opacity-100');
+                }, 3500 + Math.random() * 1000); // Variación random para no sincronizar todos
+            });
+        });
+    </script>
+</body>
+</html>
